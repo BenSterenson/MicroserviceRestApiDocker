@@ -1,7 +1,7 @@
 openapi: "3.0.0"
 
 info:
-  title: Key Mash
+  title: Sample
   version: "1.0"
 servers:
   - url: http://localhost:9090/v1.0
@@ -11,7 +11,7 @@ paths:
     get:
       summary: Generate greeting
       description: Generates a greeting message.
-      operationId: api.keymash.post_greeting
+      operationId: api.sample.post_greeting
       responses:
         200:
           description: greeting response

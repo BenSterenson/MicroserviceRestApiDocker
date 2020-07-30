@@ -1,11 +1,12 @@
-docker build -t keymash .
+#!/usr/bin/env bash
 
-docker container ls -a
+CONTAINER_NAME="sample"
 
-docker stop $1
-docker_id=$(docker container ls -a | grep $1 | cut -d' ' -f1)
+docker build -t $CONTAINER_NAME .
 
-echo $docker_id
-docker container rm $docker_id
+if [ "$(docker ps -aq -f name=$CONTAINER_NAME)" ]; then
+    docker stop $CONTAINER_NAME
+    docker rm $CONTAINER_NAME
+fi
 
-docker run -d --name $1 -p 9090:9090 keymash
+docker run -p 9090:9090 -d --name $CONTAINER_NAME $CONTAINER_NAME
